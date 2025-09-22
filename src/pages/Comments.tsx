@@ -14,7 +14,7 @@ const Comments = () => {
   const createComment = useMutation({
     mutationFn: (body: any) =>
       api.post("commnet", body).then((res) => res.data),
-    onSuccess: (res) => {
+    onSuccess: () => {
       client.invalidateQueries({queryKey: ["commentKey"]})
     },
     onError: (err) => {
@@ -25,7 +25,7 @@ const Comments = () => {
   const deleteComment = useMutation({
     mutationFn: (id: any) =>
       api.delete(`commnet/${id}`).then((res) => res.data),
-    onSuccess: (res) => {
+    onSuccess: () => {
       client.invalidateQueries({queryKey: ["commentKey"]})
     },
     onError: (err) => {
